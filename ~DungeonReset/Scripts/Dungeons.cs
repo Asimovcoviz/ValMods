@@ -121,7 +121,8 @@ namespace DungeonReset
                 if (bounds.Contains(player.transform.position))
                 {
                     Main.Log.LogWarning($"Dungeon '{timer.dungeon.GetCleanName()}' couldn't regenerate because a player was found inside!\n");
-                    Schedule(timer.dungeon, playerProtectionInterval);
+                    //Schedule(timer.dungeon, playerProtectionInterval);
+                    timer.dungeon.SetLastReset(DateTimeOffset.Now.AddSeconds(playerProtectionInterval));
                     return false;
                 }
 
